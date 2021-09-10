@@ -9,7 +9,7 @@
         "test": "jest",
         "lint": "tsc --noEmit && eslint -c ./.eslintrc.json ./src --ext .js,.jsx,.ts,.tsx",
         "prettier:write": "npx prettier --write 'src/**/*.{js,jsx,ts,tsx,json}'",
-        "precommit": "yarn lint && yarn tsconfig",
+        "precommit": "yarn lint",
         "prepare": "rm -rf ./.husky && husky install && husky add .husky/pre-commit \"yarn precommit\""
     },
     "husky": {
