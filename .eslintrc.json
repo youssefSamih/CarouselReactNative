@@ -1,0 +1,32 @@
+{
+    "root": true,
+    "extends": [
+        "@react-native-community",
+        "airbnb-typescript",
+        "prettier",
+        "prettier/@typescript-eslint",
+        "prettier/react"
+    ],
+    "parserOptions": {
+        "project": ["./tsconfig.json"]
+    },
+    "plugins": ["import"],
+    "rules": {    
+        "no-use-before-define": [
+            "off",
+            {
+                "variables": false,
+                "functions": false,
+                "classes": false
+            }
+        ],
+        "@typescript-eslint/no-use-before-define": [
+            "warn",
+            {
+                "variables": false,
+                "functions": false,
+                "classes": false
+            }
+        ]
+    }
+}
