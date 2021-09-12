@@ -17,7 +17,7 @@ $ yarn
 To run the project, you must have installed Android and/or iOS environment. Use 'run-ios' or 'run-android':
 
 ```sh
-$ yarn ios / npm run ios
+$ yarn ios / npm run ios / npx react-native run-ios
 ```
 
 lint command
