@@ -4,5 +4,14 @@
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.paths": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
