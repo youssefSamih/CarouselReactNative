@@ -20,6 +20,18 @@ To run the project, you must have installed Android and/or iOS environment. Use 
 $ yarn ios / npm run ios
 ```
 
+lint command
+
+```sh
+$ yarn lint / npm run lint
+```
+
+fix prettier write issue
+
+```sh
+$ yarn prettier:write / npm run prettier:write
+```
+
 ## Authors
 
 [Youssef Samih](https://github.com/youssefSamih)
