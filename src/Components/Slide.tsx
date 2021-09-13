@@ -1,5 +1,12 @@
 import React from 'react';
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import {
+    Dimensions,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View
+} from 'react-native';
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
 
@@ -11,49 +18,26 @@ interface SlideProps {
 }
 
 export const Slide: React.FunctionComponent<SlideProps> = React.memo(
-    ({ images, title }) => (
-        <View style={styles.SlideContainer}>
-            <Text>{title}</Text>
-            <View style={styles.GridImageStyle}>
-                <View style={styles.ImageViewColumns}>
-                    <Image
-                        source={{
-                            uri: images[
-                                Math.floor(Math.random() * images.length)
-                            ]
-                        }}
-                        style={styles.ImageStyle}
-                    />
-                    <Image
-                        source={{
-                            uri: images[
-                                Math.floor(Math.random() * images.length)
-                            ]
-                        }}
-                        style={styles.ImageStyle}
-                    />
-                </View>
-                <View style={styles.ImageViewColumns}>
-                    <Image
-                        source={{
-                            uri: images[
-                                Math.floor(Math.random() * images.length)
-                            ]
-                        }}
-                        style={styles.ImageStyle}
-                    />
-                    <Image
-                        source={{
-                            uri: images[
-                                Math.floor(Math.random() * images.length)
-                            ]
-                        }}
-                        style={styles.ImageStyle}
-                    />
-                </View>
+    ({ images, title }) => {
+        const imagesWithUniqueID = images.map((img, i) => ({
+            id: i,
+            uri: img
+        }));
+        return (
+            <View style={styles.SlideContainer}>
+                <Text style={styles.TitleStyle}>{title}</Text>
+                <ScrollView style={styles.ImagesViewContainer}>
+                    {imagesWithUniqueID.map(({ uri, id }) => (
+                        <Image
+                            key={id}
+                            source={{ uri }}
+                            style={styles.ImageStyle}
+                        />
+                    ))}
+                </ScrollView>
             </View>
-        </View>
-    )
+        );
+    }
 );
 
 const styles = StyleSheet.create({
@@ -63,15 +47,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    GridImageStyle: {
+    ImagesViewContainer: {
         flex: 1,
-        flexDirection: 'row'
+        marginBottom: (windowHeight / 6) * PADDING_FROM_WINDOW
     },
-    ImageViewColumns: {
-        flex: 1
+    TitleStyle: {
+        fontSize: 20
     },
     ImageStyle: {
-        width: windowWidth / 2,
-        height: (windowHeight / 2) * PADDING_FROM_WINDOW
+        width: windowWidth * PADDING_FROM_WINDOW,
+        height: (windowHeight / 2) * PADDING_FROM_WINDOW,
+        marginBottom: 10
     }
 });
