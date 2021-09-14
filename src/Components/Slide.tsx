@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-    Dimensions,
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View
-} from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
 
@@ -26,7 +19,7 @@ export const Slide: React.FunctionComponent<SlideProps> = React.memo(
         return (
             <View style={styles.SlideContainer}>
                 <Text style={styles.TitleStyle}>{title}</Text>
-                <ScrollView style={styles.ImagesViewContainer}>
+                <View style={styles.ImagesViewContainer}>
                     {imagesWithUniqueID.map(({ uri, id }) => (
                         <Image
                             key={id}
@@ -34,7 +27,7 @@ export const Slide: React.FunctionComponent<SlideProps> = React.memo(
                             style={styles.ImageStyle}
                         />
                     ))}
-                </ScrollView>
+                </View>
             </View>
         );
     }
@@ -47,16 +40,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    ImageStyle: {
+        width: (windowWidth / 4) * PADDING_FROM_WINDOW,
+        height: (windowHeight / 8) * PADDING_FROM_WINDOW,
+        marginRight: 5
+    },
     ImagesViewContainer: {
         flex: 1,
-        marginBottom: (windowHeight / 6) * PADDING_FROM_WINDOW
+        marginBottom: (windowHeight / 6) * PADDING_FROM_WINDOW,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     TitleStyle: {
-        fontSize: 20
-    },
-    ImageStyle: {
-        width: windowWidth * PADDING_FROM_WINDOW,
-        height: (windowHeight / 2) * PADDING_FROM_WINDOW,
-        marginBottom: 10
+        fontSize: 20,
+        marginTop: 50
     }
 });
